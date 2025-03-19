@@ -17,14 +17,38 @@
 ## 📂 Cấu trúc dự án
 ```
 lib/
-├── core/               # Base classes, constants, themes
-├── data/               # Remote/local data sources, models
-├── domain/             # Entities, use cases, repositories
-├── presentation/       
-│   ├── screens/        # UI screen theo module
-│   ├── widgets/        # Custom widgets dùng chung
-├── routes/             # Quản lý route toàn app
-├── utils/              # Helpers, extensions
+├── core/                             # Các thành phần dùng chung toàn bộ ứng dụng
+│   ├── errors/                       # Xử lý lỗi (Exception, Failure)
+│   ├── usecases/                     # UseCase cơ bản dùng chung (e.g. NoParams, UseCase base class)
+│   └── utils/                        # Tiện ích, helpers, constants, extensions dùng toàn cục
+│
+├── features/                         # Tổ chức theo tính năng (Feature-based modules)
+│   ├── room/                         # Quản lý phòng trọ
+│   │   ├── data/                     # Tầng Data: xử lý dữ liệu thô
+│   │   │   ├── datasources/          # Nguồn dữ liệu (local: SQLite/shared_pref, remote: API)
+│   │   │   ├── models/               # Data Transfer Object (DTO) từ datasource
+│   │   │   └── repositories/         # Cài đặt cụ thể repository (implements domain repo)
+│   │   ├── domain/                   # Tầng Domain: business logic thuần
+│   │   │   ├── entities/             # Định nghĩa Room entity (model không phụ thuộc tầng khác)
+│   │   │   ├── repositories/         # Giao diện repository trừu tượng (abstract class)
+│   │   │   └── usecases/             # Các hành động nghiệp vụ cụ thể (GetRooms, AddRoom,...)
+│   │   └── presentation/             # Tầng UI & State Management
+│   │       ├── pages/                # Các màn hình UI (RoomListPage, RoomDetailPage,...)
+│   │       ├── providers/            # StateNotifier, Provider quản lý state theo Riverpod
+│   │       ├── states/               # Các class trạng thái (RoomState: loading, loaded, error,...)
+│   │       └── widgets/              # Các UI component dùng lại (RoomItemTile, RoomForm,...)
+│   ├── home/                         # Màn hình Home / Dashboard (có thể gom navigation chính)
+│   ├── account/                      # Màn hình đăng kí / đăng nhập / quản lí người dùng, phân quyền
+│   ├── tenant/                       # Tính năng quản lý người thuê (cấu trúc tương tự room/)
+│   ├── contract/                     # Tính năng hợp đồng thuê nhà
+│   ├── bill/                         # Quản lý hóa đơn điện, nước,...
+│   └── branch/                       # Quản lý cơ sở/phân khu/phòng trọ theo chi nhánh
+│
+├── injection/                        # Thiết lập Dependency Injection
+│   └── service_locator.dart          # Đăng ký các dependency bằng get_it hoặc injectable
+│
+└── main.dart                         # Entry point khởi chạy ứng dụng
+
 ```
 
 ## 🛠 Công nghệ sử dụng
