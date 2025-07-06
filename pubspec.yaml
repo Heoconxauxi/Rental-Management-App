@@ -30,19 +30,39 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  smooth_page_indicator: ^1.1.0
-  firebase_core: ^3.12.1
-  cloud_firestore: ^5.5.8
-  uuid: ^4.5.1
-  flutter_riverpod: ^2.6.1
+  
+  cupertino_icons: ^1.0.2
+  flutter_hooks: ^0.20.5
+  hooks_riverpod: ^2.5.1
+  flutter_riverpod: ^2.5.1
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.8
+  firebase_core: ^2.30.0
+  firebase_auth: ^4.20.0
+  cloud_firestore: ^4.17.0
+  firebase_storage: ^11.6.0
+  firebase_messaging: ^14.7.10
+  flutter_local_notifications: ^17.0.0
+
+  go_router: ^13.2.0
+  intl: ^0.19.0
+  http: ^1.2.2
+  fl_chart: ^1.0.0
+
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.9.0
+  collection: ^1.19.1
+
+  shared_preferences: ^2.2.2
+  flutter_form_builder: ^9.1.1
+  form_builder_validators: ^11.1.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  build_runner: ^2.4.7
+  freezed: ^2.5.2
+  json_serializable: ^6.8.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -63,17 +83,7 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-  #fonts
-    #
-  #icons
-    #auth
-    - assets/icons/auth/google.png
-  #images
-    #auth
-    - assets/images/auth/background_gradient.png
-    #home
-    - assets/images/home/branch_1_map.png
+  # assets:
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
